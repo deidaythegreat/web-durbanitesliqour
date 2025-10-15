@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Spirits - Online Liquor Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth', block: 'start'});" style="cursor: pointer;">
+                <img src="durbanites-logo.jpg" alt="Durbanites Liquors Logo">
+                <span>Durbanites Liquors</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search spirits...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="cart" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Age Verification Modal -->
+    <div id="age-modal" class="modal">
+        <div class="modal-content">
+            <h2>Age Verification Required</h2>
+            <p>You must be 18 or older to purchase alcohol. Please verify your age to continue.</p>
+            <div class="age-buttons">
+                <button onclick="verifyAge(true)" class="btn-primary">I'm 18 or older</button>
+                <button onclick="verifyAge(false)" class="btn-secondary">I'm under 18</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <video class="hero-video" autoplay muted loop playsinline preload="auto">
+            <source src="pinterest-image.jpg.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Premium Spirits Delivered</h1>
+            <p>Discover the finest collection of wines, whiskeys, vodkas, and craft spirits</p>
+            <button class="cta-btn" onclick="document.getElementById('products').scrollIntoView()">
+                Shop Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2>Shop by Category</h2>
+            <div class="category-grid">
+                <div class="category-card" onclick="filterProducts('whiskey')">
+                    <i class="fas fa-glass-whiskey"></i>
+                    <h3>Whiskey</h3>
+                    <p>Premium bourbon, scotch & rye</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('wine')">
+                    <i class="fas fa-wine-glass"></i>
+                    <h3>Wine</h3>
+                    <p>Red, white & sparkling wines</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('vodka')">
+                    <i class="fas fa-cocktail"></i>
+                    <h3>Vodka</h3>
+                    <p>Premium & craft vodkas</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('beer')">
+                    <i class="fas fa-beer"></i>
+                    <h3>Beer</h3>
+                    <p>Craft & imported beers</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('gin')">
+                    <i class="fas fa-glass-martini"></i>
+                    <h3>Gin</h3>
+                    <p>Artisan & classic gins</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('rum')">
+                    <i class="fas fa-glass-cheers"></i>
+                    <h3>Rum</h3>
+                    <p>Dark, light & spiced rum</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2>Featured Products</h2>
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+                <button class="filter-btn" onclick="filterProducts('whiskey')">Whiskey</button>
+                <button class="filter-btn" onclick="filterProducts('wine')">Wine</button>
+                <button class="filter-btn" onclick="filterProducts('vodka')">Vodka</button>
+                <button class="filter-btn" onclick="filterProducts('beer')">Beer</button>
+            </div>
+            <div class="product-grid" id="product-grid">
+                <!-- Products will be dynamically loaded -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Premium Spirits</h2>
+                    <p>For over 20 years, we've been curating the finest selection of spirits from around the world. Our passion for quality and exceptional customer service has made us the trusted choice for connoisseurs and casual drinkers alike.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <h4>Fast Delivery</h4>
+                            <p>Same-day delivery available in select areas</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Secure Shopping</h4>
+                            <p>SSL encrypted checkout and secure payments</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-medal"></i>
+                            <h4>Premium Quality</h4>
+                            <p>Hand-selected spirits from top distilleries</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="durbanites-logo.jpg" alt="Durbanites Liquors Logo" class="about-logo" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth', block: 'start'});" style="cursor: pointer;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Harare, Zimbabwe<br>Mabelreign, 17 Jansen</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/263778123456" target="_blank" class="contact-link">+263 77 812 3456</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:your-email@example.com" class="contact-link">your-email@example.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form action="mailto:your-email@example.com" method="post" enctype="text/plain" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" class="btn">
+                                <i class="fas fa-envelope"></i> Send Email
+                            </button>
+                            <a href="https://wa.me/263778123456?text=Hello%20I%20have%20a%20question%20about%20your%20products" 
+                               class="btn whatsapp-btn" 
+                               target="_blank">
+                                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>(+263) 780394146 DeiDay</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@premiumspirits.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button onclick="toggleCart()" class="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cart-total">0.00</span></strong>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-wine-bottle"></i>
+                        <span>Premium Spirits</span>
+                    </div>
+                    <p>Your trusted source for premium spirits and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Whiskey</a></li>
+                        <li><a href="#">Wine</a></li>
+                        <li><a href="#">Vodka</a></li>
+                        <li><a href="#">Beer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Premium Spirits. All rights reserved. | Please drink responsibly.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
